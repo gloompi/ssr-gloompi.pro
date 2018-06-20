@@ -26,6 +26,21 @@ export default [
         component: UniversalComponent('Home'),
         path: '/',
         exact: true
+      },
+      {
+        component: UniversalComponent('Works'),
+        path: '/portfolio',
+        exact: true
+      },
+      {
+        component: UniversalComponent('About'),
+        path: '/about',
+        exact: true
+      },
+      {
+        component: UniversalComponent('Articles'),
+        path: '/blog/1',
+        exact: true
       }
     ]
   }

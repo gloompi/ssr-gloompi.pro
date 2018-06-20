@@ -4,12 +4,9 @@ import PropTypes from 'prop-types'
 
 import style from './style.styl'
 
-function Header({loggedIn, history, token}){
+function Header(){
   return(
     <header className={style.header}>
-      <div className={style.container}>
-        Header
-      </div>
     </header>
   )
 }

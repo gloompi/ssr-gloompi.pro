@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import {Helmet} from 'react-helmet'
 
-import style from './style.styl'
+import HelloWidget from '../../components/HelloWidget'
+import style from './style'
 import {scrollIt} from '../../helpers'
 
 class Home extends Component{
@@ -10,17 +12,11 @@ class Home extends Component{
 
   render(){
     return(
-      <div className={style.wrapper}>
-        <section className={`${style.container} ${style.home__wrap}`}>
-          <h1 className={style.home__title}>Инвестиции в криптовалюты</h1>
-          <div className={style.home__longtitle}>Инвестировать в криптовалюты - это просто.</div>
-          <a href="" className={style.scroll__btn} onClick={this.handleScroll}>
-            <div className={style.mouse}>
-              <span className={style.dot}></span>
-            </div>
-            <i className="fas fa-angle-down"></i>
-          </a>
-        </section>
+      <div className={style.hello}>
+        <Helmet>
+          <title>Home | GloompiQue</title>
+        </Helmet>
+        <HelloWidget />
       </div>
     )
   }

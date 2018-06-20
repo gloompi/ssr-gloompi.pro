@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux'
-import auth from '../ducks/auth'
+import about from '../ducks/about'
+import skills from '../ducks/skills'
 
 export default (asyncReducers) => combineReducers({
-  auth,
+  about, skills,
   ...asyncReducers
 })

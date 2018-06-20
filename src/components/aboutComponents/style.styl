@@ -1,0 +1,96 @@
+@import '../../assets/styles/main'
+  
+.about__section
+  width 50%
+  color #000
+  margin: 25px
+  margin-top 30px
+
+.about__title_wrap
+  position relative
+  display flex
+  align-items: center
+  justify-content center
+  width 100%
+  margin-bottom 50px
+
+.about__title
+  Font(medium)
+  position relative
+  font-size 45px
+  color $text
+  text-transform uppercase
+  z-index 1000
+
+.about__pic_wrap
+  width 100%
+  display flex
+  align-items: center
+  border-radius: 25px
+  padding: 25px
+  overflow hidden
+  img 
+    width 100%
+
+.about__content
+  padding: 25px
+
+.section__title
+  position relative
+  Font(medium)
+  color: $text
+  font-size 30px
+  text-align center
+  text-transform uppercase
+  margin-bottom 15px
+  padding-bottom 15px
+  &:after
+    content: ""
+    position absolute
+    left: 50%
+    bottom: 5px
+    width 100px
+    height 5px
+    border-radius: 15px
+    background-color $text
+    transform translate(-50%)
+
+.section__descr
+  font-size 16px
+  color $text
+  text-align center
+
+.skills__category_list
+  display flex
+  align-items: flex-start
+  justify-content flex-start
+  flex-direction: column
+  padding: 25px
+
+.skills__category_title
+  Font(medium)
+  font-size 25px
+  color $text
+  margin-bottom 15px
+
+.skills__list
+  display flex
+  align-items flex-start
+  justify-content flex-start
+  flex-wrap: wrap
+  margin-right -25px
+  margin-bottom 25px
+
+.skills__item
+  position relative
+  margin-right 25px
+  margin-bottom 25px
+  h3
+    position absolute
+    font-size 16px
+    width 70%
+    text-align center
+    left 50%
+    top: 50%
+    color: $blue
+    transform: translate(-50%, -50%)

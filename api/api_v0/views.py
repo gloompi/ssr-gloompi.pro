@@ -6,13 +6,78 @@ from django.conf import settings
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import viewsets, mixins, generics
-from rest_framework.pagination import PageNumberPagination
-from rest_framework.permissions import IsAuthenticated
+# from rest_framework.pagination import PageNumberPagination
 
 # from news.models import NewsModel
 # from .serializers import NewsSerializer
+from about.models import AboutModel
+from articles.models import ArticleModel, ArticleCategoryModel
+from skills.models import SkillListModel, SkillModel
+from .pagination import StandardResultsSetPagination
+from works.models import WorkCategoryModel, WorkPicModel, TechModel, WorkModel
+
+from .serializers import (
+  WorkSerializer,
+  WorkCategorySerializer,
+  TechSerializer,
+  WorkPicSerializer,
+  SkillSerializer,
+  SkillListSerializer,
+  ArticleCategorySerializer,
+  ArticleSerializer,
+  AboutSerializer
+)
+
 
 # Create your views here.
+class AboutView(generics.ListAPIView):
+  serializer_class = AboutSerializer
+  
+  def get_queryset(self): 
+    about = AboutModel.objects.all()
+    return about
+
+class ArticleCategoryView(generics.ListAPIView):
+  serializer_class = ArticleCategorySerializer
+  
+  def get_queryset(self): 
+    categories = ArticleCategoryModel.objects.all()
+    return categories
+
+class ArticlesView(generics.ListAPIView):
+  serializer_class = ArticleSerializer
+  
+  def get_queryset(self): 
+    articles = ArticleModel.objects.all()
+    return articles
+
+class SkillListView(generics.ListAPIView):
+  serializer_class = SkillListSerializer
+
+  def get_queryset(self): 
+    categories = SkillListModel.objects.all()
+    return categories
+
+class SkillsView(generics.ListAPIView):
+  serializer_class = SkillSerializer
+  pagination_class = StandardResultsSetPagination
+  def get_queryset(self):
+    skills = SkillModel.objects.all()
+    return skills
+
+class WorksCategoryView(generics.ListAPIView):
+  serializer_class = WorkCategorySerializer
+  def get_queryset(self):
+    categories = WorkCategoryModel.objects.all()
+    return categories
+
+class WorksView(generics.ListAPIView):
+  serializer_class = WorkSerializer
+
+  def get_queryset(self):
+    works = WorkModel.objects.all()
+    return works
+
 # class CreateBalanceChargeView(generics.CreateAPIView):
 #   serializer_class = BalanceChargeSerializer
 #   queryset = BalanceCharge.objects.all()

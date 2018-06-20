@@ -1,12 +1,10 @@
 //variables
-$white = #fff
-$orange = #FE510D
-$orange-light = #fe510d
-$red = #FF2830
 $black = #000
-$txt = #3b3d46
-$disable-txt = #929292
-$bg = #f3f3f3
+$white = #fff
+$bg = #f2f0e8
+$text = #373e42
+$blue = #1056d1
+$hover-blue = #083c96
 
 // layout
 
@@ -15,80 +13,31 @@ $bg = #f3f3f3
 @import "common/_media"
 @import "common/_greating"
 
-.input
-  font-size 14px
-  width: 360px
-  height: 30px
-  background-color $white
-  border 1px solid transparent
-  border-radius: 5px
-  padding-left: 15px
-  margin-bottom: 25px
-
-.btn
-  Font(medium)
-  font-size 16px
-  padding: 7px 35px
-  border: none
-  border-radius: 5px
-  background-color $white
-  color: $red
-  text-transform uppercase
-  cursor: pointer
-  &:hover
-    color: $white
-    background-color $black
-
-.section
-  padding 100px 0 0
-  background-color: $white
-
-.section__container
-  display flex
-  align-items: center
-  flex-direction: column
-
-.section__icon
+.main
   position: relative
-  display: flex
-  align-items: center
-  justify-content: center
-  width 120px
-  margin-bottom 25px
-  img 
-    width 40px
-  svg 
-    font-size 40px
-    color: $red
-  &:before
-    content ""
-    position: absolute
-    left: 0
-    top: 50%
-    width 30px
-    height: 3px
-    background-color $red
-    border-radius: 5px
-    transform: translateY(-50%)
-  &:after
-    content ""
-    position: absolute
-    right: 0
-    top: 50%
-    width 30px
-    height: 3px
-    background-color $red
-    border-radius: 5px
-    transform: translateY(-50%)
+  background-color: $bg
 
-.section__title
-  Font()
-  font-weight normal
-  font-size 36px
-  color: $black
-  letter-spacing 1.5px
+.info__name,
+.hello__widget_title
+  @include Font(medium)
 
-.section__longtitle
-  font-size 14px
-  color: $txt
-  margin-bottom 50px
+.info__descr,
+.hello__widget_description
+  @include Font(light)
+
+.about__me
+  h2
+    @include Font(medium)
+
+.footer__bottom,
+.footer__left,
+.footer__right
+  @include Font(light)
+  color: $white
+
+.portfolio__title
+  @include Font(medium)
+
+.portfolio__form
+  @include Font(light)
+
