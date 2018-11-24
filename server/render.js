@@ -7,10 +7,9 @@ import { renderRoutes } from 'react-router-config'
 import { Helmet } from 'react-helmet'
 import flushChunks from 'webpack-flush-chunks'
 import serialize from 'serialize-javascript'
-import PropTypes from 'prop-types'
 
-import Routes from '../src/pages/Routes'
-import configureStore from '../src/configureStore'
+import Routes from 'Src/pages/Routes'
+import configureStore from 'Src/configureStore'
 
 export default ({ clientStats }) => (req, res) => {
   const store = configureStore()

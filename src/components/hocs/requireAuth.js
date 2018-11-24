@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 
-import {jwtSecretName} from '../../../configClient'
-import Loader from '../Loader'
+import {jwtSecretName} from 'Root/configClient'
+import Loader from 'Components/Loader'
 
 export default (ChildComponent) => {
   class RequireAuth extends Component {

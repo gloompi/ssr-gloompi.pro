@@ -4,7 +4,8 @@ import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
 import AppContainer from 'react-hot-loader/lib/AppContainer'
-import Routes from './pages/Routes'
+
+import Routes from 'Pages/Routes'
 import configureStore from './configureStore'
 
 const store = configureStore(window.__INITIAL_STATE__)
@@ -21,8 +22,8 @@ const render = App => ReactDOM.hydrate(
 )
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
-  module.hot.accept('./pages/Routes.js', () => {
-    const Routes = require('./pages/Routes').default
+  module.hot.accept('Pages/Routes.js', () => {
+    const Routes = require('Pages/Routes').default
     render(Routes)
   })
 }

@@ -56,22 +56,22 @@ transition($transition)
 Rem($px) 
   $px / 16px + 0rem
 
-desktops 
+desktops()
   @media screen and (max-width 1200px) 
-    @content
+    {block}
   
-laptops 
+laptops()
   @media screen and (max-width 992px) 
-    @content
+    {block}
   
-tablets 
+tablets()
   @media screen and (max-width 768px) 
-    @content
+    {block}
   
-phones 
+phones()
   @media screen and (max-width 480px) 
-    @content
+    {block}
   
-phones-s 
+phones-s()
   @media screen and (max-width 360px) 
-    @content
+    {block}

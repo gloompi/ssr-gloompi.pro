@@ -61,6 +61,17 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.css', '.styl']
+    extensions: ['.js', '.css', '.styl'],
+    alias: {
+			'Root': path.resolve(__dirname, '../'),
+      'App': path.resolve(__dirname, '../api'),
+      'Src': path.resolve(__dirname, '../src'),
+      'Server': path.resolve(__dirname, '../server'),
+			'Pages': path.resolve(__dirname, '../src/pages'),
+			'Ducks': path.resolve(__dirname, '../src/ducks'),
+			'Assets': path.resolve(__dirname, '../src/assets'),
+			'Reducers': path.resolve(__dirname, '../src/reducers'),
+			'Components': path.resolve(__dirname, '../src/components'),
+		}
   },
 }

@@ -4,6 +4,8 @@ from rest_framework.authtoken import views
 from .views import (
   WorksView, 
   WorksCategoryView, 
+  WorkPicsView, 
+  TechView,
   SkillsView,
   SkillListView,
   ArticlesView,
@@ -23,6 +25,8 @@ urlpatterns = [
   url(r'^articles/', ArticlesView.as_view(), name='articles'),
   url(r'^skill-categories/', SkillListView.as_view(), name='skill-categories'),
   url(r'^skills/', SkillsView.as_view(), name='skills'),
-  url(r'^work-categories/', WorksCategoryView.as_view(), name='work-cateogories'),
   url(r'^works/', WorksView.as_view(), name='works'),
+  url(r'^work-techs/', TechView.as_view(), name='techs'),
+  url(r'^work-categories/', WorksCategoryView.as_view(), name='work-cateogories'),
+  url(r'^work-pics/', WorkPicsView.as_view(), name='pics'),
 ]

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
-import {fetchSkills} from '../../ducks/skills'
-import Progress from '../svg/circleProgress'
-import Loader from '../Loader'
 import style from './style'
-import {ObjToImmArr} from '../../helpers'
+import { fetchSkills } from 'Ducks/skills'
+import { ObjToImmArr } from 'Src/helpers'
+import Loader from 'Components/Loader'
+import Progress from 'Components/svg/circleProgress'
 
 class AboutSkills extends Component {
   componentDidMount() {
@@ -19,7 +19,7 @@ class AboutSkills extends Component {
     return (
       <section className={style.about__section}>
         <h3 className={style.section__title}>What can i do for you</h3>
-        <p className={style.section__descr}>I am a Frontend developer, but also familiar with BackEnd. Let's watch my skills.</p>
+        <p className={style.section__descr}>Frontend engineer with good BackEnd knowledge.</p>
         <ul className={style.skills__category_list}>
           {categories.map(category => {
             const {title, id} = category
@@ -27,9 +27,9 @@ class AboutSkills extends Component {
               <h3 className={style.skills__category_title}>{title}</h3>
               <ul className={style.skills__list}>
                 {ObjToImmArr(entities)
-                  .filter(({category}) => category.id == id)
+                  .filter(({ category }) => category.id == id)
                   .map(item => {
-                    const {title, knowledge, category} = item
+                    const { title, knowledge } = item
                     return <li key={title} className={style.skills__item}>
                       <h3>{title}</h3>
                       <Progress percent={knowledge} />

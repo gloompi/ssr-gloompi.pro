@@ -1,6 +1,6 @@
 import React from 'react'
 
-import img from '../assets/images/loader.gif'
+import img from 'Assets/images/loader.gif'
 
 function Loader(props){
   const {width = 35} = props

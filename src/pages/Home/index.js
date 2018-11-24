@@ -1,10 +1,10 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import {Helmet} from 'react-helmet'
+import { Helmet } from 'react-helmet'
 
-import HelloWidget from '../../components/HelloWidget'
+import HelloWidget from 'Components/HelloWidget'
+import { scrollIt } from 'Src/helpers'
 import style from './style'
-import {scrollIt} from '../../helpers'
 
 class Home extends Component{
   static propTypes = {

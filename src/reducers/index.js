@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux'
-import about from '../ducks/about'
-import skills from '../ducks/skills'
+import about from 'Ducks/about'
+import skills from 'Ducks/skills'
+import works from 'Ducks/works'
 
 export default (asyncReducers) => combineReducers({
-  about, skills,
+  about, skills, works,
   ...asyncReducers
 })

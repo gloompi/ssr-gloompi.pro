@@ -12,6 +12,7 @@ class WorkSerializer(serializers.ModelSerializer):
   class Meta:
     model = WorkModel
     fields = (
+      'pk',
       'title', 
       'cover_picture', 
       'category', 
@@ -26,7 +27,7 @@ class TechSerializer(serializers.ModelSerializer):
     
   class Meta:
     model = TechModel
-    fields = ('title', 'icon')
+    fields = ('pk', 'title', 'icon')
 
 class WorkPicSerializer(serializers.ModelSerializer):
     

@@ -61,12 +61,14 @@ class SkillListView(generics.ListAPIView):
 class SkillsView(generics.ListAPIView):
   serializer_class = SkillSerializer
   pagination_class = StandardResultsSetPagination
+
   def get_queryset(self):
     skills = SkillModel.objects.all()
     return skills
 
 class WorksCategoryView(generics.ListAPIView):
   serializer_class = WorkCategorySerializer
+
   def get_queryset(self):
     categories = WorkCategoryModel.objects.all()
     return categories
@@ -77,6 +79,27 @@ class WorksView(generics.ListAPIView):
   def get_queryset(self):
     works = WorkModel.objects.all()
     return works
+
+class TechView(generics.ListAPIView):
+  serializer_class = TechSerializer
+
+  def get_queryset(self):
+    technologies = TechModel.objects.all()
+    return technologies
+
+class WorkPicsView(generics.ListAPIView):
+  serializer_class = WorkPicSerializer
+  queryset = WorkPicModel.objects.all()
+
+
+# class WorkPicsView(generics.ListAPIView):
+#   serializer_class = WorkPicSerializer
+
+#   def get_queryset(self):
+#     work = self.kwargs['work']
+#     pics = WorkPicModel.objects.filter(work=work)
+
+#     return pics
 
 # class CreateBalanceChargeView(generics.CreateAPIView):
 #   serializer_class = BalanceChargeSerializer

@@ -1,9 +1,9 @@
-import {Map, Record} from 'immutable'
-import {put, call, takeEvery} from 'redux-saga/effects'
+import { Map, Record } from 'immutable'
+import { put, call, takeEvery } from 'redux-saga/effects'
 import axios from 'axios'
 
-import {getCookie} from '../helpers'
-import {appName, jwtSecretName, api} from '../../configClient'
+import { getCookie } from 'Src/helpers'
+import { appName, jwtSecretName, api } from 'Root/configClient'
 
 const ReducerRecord = Record({
   user: {},
@@ -18,7 +18,7 @@ export const FETCH_AUTH_SUCCESS = `${appName}/${modulName}/FETCH_AUTH_SUCCESS`
 export const FETCH_AUTH_ERROR = `${appName}/${modulName}/FETCH_AUTH_ERROR`
 
 export default (state = new ReducerRecord, action) => {
-  const {type, payload, error} = action
+  const { type, payload, error } = action
   switch (type) {
     case FETCH_AUTH_REQUEST:
       return state.set('loaded', false)
@@ -45,8 +45,8 @@ export const fetchAuth = (username, password, history) => {
   }
 }
 
-const fetchAuthSaga = function * ({username, password, history}) {
-  const authentication = {username, password}
+const fetchAuthSaga = function * ({ username, password, history }) {
+  const authentication = { username, password }
   const csrf = getCookie('csrftoken')
   try {
     const response = yield call(axios, {

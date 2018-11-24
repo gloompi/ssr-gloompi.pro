@@ -1,11 +1,11 @@
-import React, {Component, Fragment} from 'react'
-import {Helmet} from 'react-helmet'
+import React, { Component, Fragment } from 'react'
+import { Helmet }  from 'react-helmet'
 
-import Header from '../../components/Header'
-import AboutMain from '../../components/aboutComponents/AboutMain'
-import AboutSkills from '../../components/aboutComponents/AboutSkills'
-import RightBg from '../../components/svg/aboutRight'
-import LeftBg from '../../components/svg/aboutLeft'
+import Header from 'Components/Header'
+import AboutMain from 'Components/aboutComponents/AboutMain'
+import AboutSkills from 'Components/aboutComponents/AboutSkills'
+import RightBg from 'Components/svg/aboutRight'
+import LeftBg from 'Components/svg/aboutLeft'
 import style from './style'
 
 class About extends Component{

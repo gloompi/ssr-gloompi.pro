@@ -1,9 +1,9 @@
-import {Map, Record} from 'immutable'
-import {put, call, takeEvery} from 'redux-saga/effects'
+import { Map, Record } from 'immutable'
+import { put, call, takeEvery } from 'redux-saga/effects'
 import axios from 'axios'
 
-import {arrToImmObj} from '../helpers'
-import {appName, api} from '../../configClient'
+import { arrToImmObj } from 'Src/helpers'
+import { appName, api } from 'Root/configClient'
 
 const SkillRecord = Record({
   title: "",
@@ -23,7 +23,7 @@ export const FETCH_SKILLS_SUCCESS = `${appName}/${modulName}/FETCH_SKILLS_SUCCES
 export const FETCH_SKILLS_ERROR = `${appName}/${modulName}/FETCH_SKILLS_ERROR`
 
 export default (state = new ReducerRecord, action) => {
-  const {type, payload} = action
+  const { type, payload } = action
   switch (type) {
     case FETCH_SKILLS_REQUEST:
       return state.set('loaded', null)
@@ -52,19 +52,19 @@ export const fetchSkills = () => {
 
 const fetchSkillsSaga = function * () {
   try {
-    let {data} = yield call(axios, `${api}/skills/`)
+    let { data } = yield call(axios, `${api}/skills/`)
     const skills = data.results
     const list = yield call(axios, `${api}/skill-categories/`)
     const categories = list.data.results
 
     skills.map(item => {
-      const category = categories.filter(({id}) => id == item.category)[0]
+      const category = categories.filter(({ id }) => id == item.category)[0]
       item.category = category
     })
 
     yield put({
       type: FETCH_SKILLS_SUCCESS,
-      payload: {skills, categories}
+      payload: { skills, categories }
     })
   } catch (error) {
     yield put({

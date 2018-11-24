@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
-import Socials from '../Socials'
 import style from './style'
-import avatar from '../../assets/images/avatar.jpg'
+import Socials from 'Components/Socials'
+import avatar from 'Assets/images/avatar.jpg'
 
 export default function HelloWidget() {
   return(

@@ -1,25 +1,24 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
-import {fetchAbout} from '../../ducks/about'
-import Star from '../svg/star1'
-import Header from '../svg/aboutHeader'
 import style from './style'
-import {createMarkup} from '../../helpers'
-import Loader from '../Loader'
+import { fetchAbout } from 'Ducks/about'
+import { createMarkup } from 'Src/helpers'
+import Loader from 'Components/Loader'
+import Star from 'Components/svg/star1'
 
 class AboutMain extends Component {
   componentDidMount = () => {
-    const {fetchAbout, loaded} = this.props
+    const { fetchAbout, loaded } = this.props
     if(!loaded){
       fetchAbout()
     }
   }
   
   render() {
-    const {entities, loaded} = this.props
+    const { entities, loaded } = this.props
     if(!loaded) return <Loader />
-    const {title, cover_picture, content} = entities
+    const { title, cover_picture, content } = entities
     return (
       <section className={style.about__section}>
         <div className={style.about__title_wrap}>
@@ -35,7 +34,7 @@ class AboutMain extends Component {
   }
 }
 
-export default connect(({about}) => ({
+export default connect(({ about }) => ({
   loaded: about.loaded,
   entities: about.entities
-}), {fetchAbout})(AboutMain)
+}), { fetchAbout })(AboutMain)

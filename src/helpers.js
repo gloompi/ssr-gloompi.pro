@@ -1,4 +1,4 @@
-import {Map, Record, OrderedMap} from 'immutable'
+import { Map, Record, OrderedMap } from 'immutable'
 
 export function httpChanger(url){
   let httpsTest = /https/i

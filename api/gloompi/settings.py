@@ -87,6 +87,7 @@ WSGI_APPLICATION = 'gloompi.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+# export VARNAME=variable
 
 DATABASES = {
     'default': {

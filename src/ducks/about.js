@@ -1,8 +1,8 @@
-import {Map, Record} from 'immutable'
-import {put, call, takeEvery} from 'redux-saga/effects'
+import { Map, Record } from 'immutable'
+import { put, call, takeEvery } from 'redux-saga/effects'
 import axios from 'axios'
 
-import {appName, api} from '../../configClient'
+import { appName, api } from 'Root/configClient'
 
 const AboutRecord = Record({
   title: "",
@@ -21,13 +21,13 @@ export const FETCH_ABOUT_SUCCESS = `${appName}/${modulName}/FETCH_ABOUT_SUCCESS`
 export const FETCH_ABOUT_ERROR = `${appName}/${modulName}/FETCH_ABOUT_ERROR`
 
 export default (state = new ReducerRecord, action) => {
-  const {type, payload} = action
+  const { type, payload } = action
   switch (type) {
     case FETCH_ABOUT_REQUEST:
       return state.set('loaded', null)
 
     case FETCH_ABOUT_SUCCESS:
-      const {title, cover_picture, content} = payload
+      const { title, cover_picture, content } = payload
       return state
         .set('loaded', true)
         .set('entities', new AboutRecord({
