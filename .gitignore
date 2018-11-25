@@ -39,6 +39,8 @@ jspm_packages/
 public/
 api/venv/
 */migrations/
+/api/api_v0/__pycache__
+**/__pycache__
 
 # Typescript v1 declaration files
 typings/

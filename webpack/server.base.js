@@ -13,7 +13,7 @@ module.exports = {
     path: output,
     filename: '[name].js',
     libraryTarget: 'commonjs2',
-    publicPath: path.resolve(__dirname, '../build/static/')
+    publicPath: path.resolve(__dirname, '../build/public/')
   },
   name: 'server',
   target: 'node',
