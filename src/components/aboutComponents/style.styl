@@ -26,11 +26,11 @@
   width 100%
   display flex
   align-items: center
-  border-radius: 25px
   padding: 25px
   overflow hidden
   img 
     width 100%
+    border-radius(25px)
 
 .about__content
   padding: 25px
@@ -60,37 +60,60 @@
   color $text
   text-align center
 
-.skills__category_list
-  display flex
-  align-items: flex-start
-  justify-content flex-start
-  flex-direction: column
-  padding: 25px
+.skills
+  &__category
+    &_list
+      display flex
+      align-items: flex-start
+      justify-content flex-start
+      flex-direction: column
+      padding: 25px
+    
+    &_title
+      Font(medium)
+      font-size 25px
+      color $text
+      margin-bottom 15px
+  
+  &__list
+    display flex
+    align-items flex-start
+    justify-content flex-start
+    flex-wrap: wrap
+    margin-right -25px
+    margin-bottom 25px
 
-.skills__category_title
-  Font(medium)
-  font-size 25px
-  color $text
-  margin-bottom 15px
+  &__item
+    position relative
+    margin-right 25px
+    margin-bottom 25px
+    h3
+      position absolute
+      font-size 16px
+      width 70%
+      text-align center
+      left 50%
+      top: 50%
+      color: $blue
+      transform: translate(-50%, -50%)
 
-.skills__list
-  display flex
-  align-items flex-start
-  justify-content flex-start
-  flex-wrap: wrap
-  margin-right -25px
-  margin-bottom 25px
+    &:hover
+      .skills__popup
+        opacity 1
 
-.skills__item
-  position relative
-  margin-right 25px
-  margin-bottom 25px
-  h3
-    position absolute
-    font-size 16px
-    width 70%
-    text-align center
-    left 50%
-    top: 50%
-    color: $blue
-    transform: translate(-50%, -50%)
+  &__popup
+    Font(kaushan)
+    font-size 30px
+    position: absolute
+    display flex
+    align-items: center
+    justify-content: center
+    width 100%
+    height 100%
+    border-radius: 50%
+    left 0
+    top 0
+    color $white
+    background-color $hover-blue
+    opacity 0
+    transition: .3s

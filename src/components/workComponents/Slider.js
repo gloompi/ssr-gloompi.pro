@@ -83,7 +83,7 @@ class Slider extends Component {
             ))}
           </ul>
           <div className={style.slider__content} dangerouslySetInnerHTML={createMarkup(content)} />
-          <a href={link} className={style.slider__link}>Go to website</a>
+          <a href={link} target='_blank' className={style.slider__link}>Go to website</a>
         </div>
       </div>
     )

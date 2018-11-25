@@ -33,6 +33,7 @@ class AboutSkills extends Component {
                     return <li key={title} className={style.skills__item}>
                       <h3>{title}</h3>
                       <Progress percent={knowledge} />
+                      <span className={style.skills__popup}>{knowledge}%</span>
                     </li>
                 })}
               </ul>

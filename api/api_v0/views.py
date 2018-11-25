@@ -30,6 +30,11 @@ from .serializers import (
 
 
 # Create your views here.
+class LargeResultsSetPagination(PageNumberPagination):
+    page_size = 1000
+    page_size_query_param = 'page_size'
+    max_page_size = 10000
+
 class AboutView(generics.ListAPIView):
   serializer_class = AboutSerializer
   
@@ -90,6 +95,7 @@ class TechView(generics.ListAPIView):
 class WorkPicsView(generics.ListAPIView):
   serializer_class = WorkPicSerializer
   queryset = WorkPicModel.objects.all()
+  pagination_class = LargeResultsSetPagination
 
 
 # class WorkPicsView(generics.ListAPIView):
