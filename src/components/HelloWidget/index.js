@@ -1,10 +1,10 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 
 import style from './style'
 import Socials from 'Components/Socials'
 import avatar from 'Assets/images/avatar.jpg'
+import { ownerName, ownerProfession } from 'Root/configClient'
 
 export default function HelloWidget() {
   return(
@@ -13,8 +13,8 @@ export default function HelloWidget() {
         <div className={style.hello__widget_pic}>
           <img src={avatar} alt="avatar" className={style.hello__widget_img}/>
         </div>
-        <h2 className={style.hello__widget_title}>Esenzhanov Kubanychbek</h2>
-        <div className={style.hello__widget_description}>Full-Stack Web Developer</div>
+        <h2 className={style.hello__widget_title}>{ownerName}</h2>
+        <div className={style.hello__widget_description}>{ownerProfession}</div>
         <Socials />
         <HelloMenu />
       </div>

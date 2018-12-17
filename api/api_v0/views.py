@@ -13,7 +13,7 @@ from rest_framework.pagination import PageNumberPagination
 from about.models import AboutModel
 from articles.models import ArticleModel, ArticleCategoryModel
 from skills.models import SkillListModel, SkillModel
-from .pagination import StandardResultsSetPagination
+from .pagination import StandardResultsSetPagination, LargeResultsSetPagination
 from works.models import WorkCategoryModel, WorkPicModel, TechModel, WorkModel
 
 from .serializers import (
@@ -30,11 +30,6 @@ from .serializers import (
 
 
 # Create your views here.
-class LargeResultsSetPagination(PageNumberPagination):
-    page_size = 1000
-    page_size_query_param = 'page_size'
-    max_page_size = 10000
-
 class AboutView(generics.ListAPIView):
   serializer_class = AboutSerializer
   
@@ -80,6 +75,7 @@ class WorksCategoryView(generics.ListAPIView):
 
 class WorksView(generics.ListAPIView):
   serializer_class = WorkSerializer
+  pagination_class = StandardResultsSetPagination
 
   def get_queryset(self):
     works = WorkModel.objects.all()

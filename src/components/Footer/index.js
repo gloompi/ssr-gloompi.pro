@@ -1,22 +1,13 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Link, NavLink } from 'react-router-dom'
+import React from 'react'
 
 import style from './style'
 
-class Footer extends Component{
-  static propTypes = {
-  }
-
-  render(){ 
-    return(
-      <footer className={style.footer}>
-        <div className={`${style.container} ${style.footer__container}`}>
-          Footer
-        </div>
-      </footer>
-    )
-  }
-}
+const Footer = () => (
+  <footer className={style.footer}>
+    <div className={`${style.container} ${style.footer__container}`}>
+      2018 &copy; Created with &#10084; by GlooMpiQue
+    </div>
+  </footer>
+)
 
 export default Footer

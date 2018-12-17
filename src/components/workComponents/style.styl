@@ -7,6 +7,7 @@
   flex-wrap: wrap
   background: $bg
   padding: 25px
+  z-index 100
 
 .works__item
   position relative
@@ -44,7 +45,8 @@
       opacity 1
 
 .slider
-
+  position relative
+  z-index: 500
   &__container
     position relative
     padding: 25px
@@ -53,7 +55,7 @@
     justify-content: space-between
     width 80%
     height 90%
-
+    z-index 500
   &__close
     position absolute
     left: calc(100% + 10px)

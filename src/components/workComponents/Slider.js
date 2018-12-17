@@ -13,10 +13,6 @@ class Slider extends Component {
     this.handleClickOutside = this.handleClickOutside.bind(this)
   }
 
-  showLog(){
-    console.log('showLog')
-  }
-
   componentDidMount() {
     window.addEventListener('mousedown', this.handleClickOutside)
   }

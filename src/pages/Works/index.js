@@ -7,6 +7,7 @@ import style from './style'
 import Header from 'Components/Header'
 import List from 'Components/workComponents/List'
 import Slider from 'Components/workComponents/Slider'
+import Footer from 'Components/Footer'
 
 class Works extends Component{
   state = {
@@ -14,6 +15,11 @@ class Works extends Component{
     work: null,
     right: null,
     left: null,
+  }
+
+  constructor(props) {
+    super(props)
+    this.scrollElement = React.createRef()
   }
 
   render(){
@@ -26,24 +32,24 @@ class Works extends Component{
         <Helmet>
           <title>Works | GloompiQue</title>
         </Helmet>
-        <Header />
-        <div className={style.works__main}>
+        <Header scrollElement={this.scrollElement} />
+        <main ref={this.scrollElement} className={style.works__main}>
           <List handleClick={this.handleClick} />
           {open && <div className={style.slider__wrap}>
             {
               !left && !right
-                ? <Entrance 
-                  duration='1s' 
+                ? <Entrance
+                  duration='1s'
                   as='div'
                   className={style.slider__animate}
-                  component={() => <Slider 
+                  component={() => <Slider
                     handleNext={this.handleNext}
                     handlePrev={this.handlePrev}
                     handleClose={this.handleClose}
                     nextWork={nextWork}
                     prevWork={prevWork}
                     {...this.state}
-                  />} 
+                  />}
                 />
                 : left
                   ? <FadeInLeft
@@ -74,7 +80,8 @@ class Works extends Component{
                   />
             }
           </div>}
-        </div>
+        </main>
+        <Footer />
       </div>
     )
   }
