@@ -69,8 +69,8 @@ export const movingStars = (canvas, txtInfinity) => {
   const attractorSize = 100
   const starSize2 = starSize / 2
   const attractorSize2 = attractorSize / 2
-  const scrollSpeed = 0.2
-  const directionChangeRate = 0.2
+  const scrollSpeed = 1
+  const directionChangeRate = 1
   const pointer = { x : 0, y : 0}
   const randI = (min, max = min + (min = 0)) => (Math.random() * (max - min) + min) | 0
   const randG = (p) => Math.random() * Math.random() * Math.random()

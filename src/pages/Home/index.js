@@ -1,9 +1,13 @@
-import React, { Component, Fragment } from 'react'
+import React from 'react'
+import { ExpanseUp } from 'animate-components'
 
 import Header from 'Components/Header'
 
 const Home = () => (
-  <Header homePage />
+  <ExpanseUp
+    duration='1s'
+    component={() => <Header homePage />}
+  />
 )
 
 export default Home

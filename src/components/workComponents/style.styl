@@ -44,6 +44,30 @@
       bottom: 0
       opacity 1
 
+.works__category
+  &_list
+    position relative
+    display flex
+    align-items: center
+    justify-content: center
+    padding: 0 25px 50px
+    z-index 100
+
+  &_item
+    margin-right 25px
+
+    &:last-child
+      margin-right 0
+
+  &_link
+    Font(medium)
+    font-size 20px
+    color $blue
+    text-transform uppercase
+
+    &:hover
+      color $hover-blue
+
 .slider
   position relative
   z-index: 500

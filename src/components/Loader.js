@@ -2,14 +2,17 @@ import React from 'react'
 
 import img from 'Assets/images/loader.gif'
 
-function Loader(props){
-  const {width = 35} = props
-  const style = {
-    width: width
-  }
-  return(
-    <img src={img} style={style} />
-  )
+const style = {
+  position: 'relative',
+  display: 'flex',
+  justifyContent: 'center',
+  zIndex: 2000
 }
+
+const Loader = ({ width = 35 }) => (
+  <div style={style}>
+    <img src={img} style={{ width }} />
+  </div>
+)
 
 export default Loader

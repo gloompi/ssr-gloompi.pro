@@ -21,10 +21,12 @@ const WorkRecord = Record({
 const ReducerRecord = Record({
   loaded: null,
   entities: new WorkRecord,
+  entitiesByCategory: [],
   categories: []
 })
 
 export const modulName = 'works'
+export const SET_WORKS_BY_CATEGORY = `${appName}/${modulName}/SET_WORKS_BY_CATEGORY`
 export const FETCH_WORKS_REQUEST = `${appName}/${modulName}/FETCH_WORKS_REQUEST`
 export const FETCH_WORKS_SUCCESS = `${appName}/${modulName}/FETCH_WORKS_SUCCESS`
 export const FETCH_WORKS_ERROR = `${appName}/${modulName}/FETCH_WORKS_ERROR`
@@ -46,8 +48,19 @@ export default (state = new ReducerRecord, action) => {
       return state
         .set('loaded', false)
 
+    case SET_WORKS_BY_CATEGORY:
+      return state.set('entitiesByCategory', payload.works)
+
     default:
       return state
+  }
+}
+
+export const setWorksByCategory = (categoryId, works) => {
+  const filteredWorks = works.filter(({ category }) => category.some(({ id }) => id == categoryId))
+  return {
+    type: SET_WORKS_BY_CATEGORY,
+    payload: { works: filteredWorks },
   }
 }
 

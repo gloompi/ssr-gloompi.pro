@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
-import { Entrance, FadeInLeft, FadeInRight } from 'animate-components'
+import {
+  Entrance,
+  FadeInLeft,
+  FadeInRight,
+  ExpanseUp,
+} from 'animate-components'
 
 import style from './style'
 import Header from 'Components/Header'
+import Category from 'Components/workComponents/Category'
 import List from 'Components/workComponents/List'
 import Slider from 'Components/workComponents/Slider'
 import Footer from 'Components/Footer'
@@ -22,18 +28,23 @@ class Works extends Component{
     this.scrollElement = React.createRef()
   }
 
-  render(){
+  render() {
     const { work, open, left, right } = this.state
     const { entities } = this.props
     const nextWork = entities.get(work - 1)
     const prevWork = entities.get(work + 1)
     return (
-      <div className={style.page__main}>
+      <ExpanseUp
+        duration='1s'
+        as='div'
+        className={style.page__main}
+      >
         <Helmet>
           <title>Works | GloompiQue</title>
         </Helmet>
         <Header scrollElement={this.scrollElement} />
         <main ref={this.scrollElement} className={style.works__main}>
+          <Category />
           <List handleClick={this.handleClick} />
           {open && <div className={style.slider__wrap}>
             {
@@ -82,7 +93,7 @@ class Works extends Component{
           </div>}
         </main>
         <Footer />
-      </div>
+      </ExpanseUp>
     )
   }
 
