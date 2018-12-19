@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
-import { Bounce } from 'animate-components'
 
 import { createMarkup } from 'Src/helpers'
 import style from './style'
@@ -26,6 +25,10 @@ class Slider extends Component {
     if (!withinListItems) {
       this.props.handleClose()
     }
+  }
+
+  handleLoaded = e => {
+    e.target.parentElement.style = 'animation: 2s ease 0s 1 normal none running bGJZDZ; backface-visibility: visible;'
   }
 
   render() {
@@ -64,7 +67,7 @@ class Slider extends Component {
         <ul className={style.pics__list}>
           {pics.map(({ pic }, idx) => (
             <li key={idx} className={style.pics__item}>
-              <Bounce duration='2s' as='img' src={pic} alt='work pics'/>
+              <img src={pic} onLoad={this.handleLoaded} alt='work pics'/>
             </li>
           ))}
         </ul>

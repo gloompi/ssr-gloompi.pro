@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
-import { ExpanseUp } from 'animate-components'
 
 import style from './style'
 import Header from 'Components/Header'
@@ -14,20 +13,16 @@ class Articles extends Component{
   }
   render(){
     return (
-      <ExpanseUp
-        duration='1s'
-        as='div'
-        className={style.page__main}
-      >
+      <div className={style.page__main}>
         <Helmet>
           <title>Articles | GloompiQue</title>
         </Helmet>
         <Header scrollElement={this.scrollElement} />
-        <main ref={this.scrollElement}>
+        <main ref={this.scrollElement} className={style.articles__main}>
           <h1>Articles</h1>
         </main>
         <Footer />
-      </ExpanseUp>
+      </div>
     )
   }
 }

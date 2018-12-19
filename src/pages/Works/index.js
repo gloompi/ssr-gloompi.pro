@@ -5,7 +5,6 @@ import {
   Entrance,
   FadeInLeft,
   FadeInRight,
-  ExpanseUp,
 } from 'animate-components'
 
 import style from './style'
@@ -34,11 +33,7 @@ class Works extends Component{
     const nextWork = entities.get(work - 1)
     const prevWork = entities.get(work + 1)
     return (
-      <ExpanseUp
-        duration='1s'
-        as='div'
-        className={style.page__main}
-      >
+      <div className={style.page__main}>
         <Helmet>
           <title>Works | GloompiQue</title>
         </Helmet>
@@ -93,7 +88,7 @@ class Works extends Component{
           </div>}
         </main>
         <Footer />
-      </ExpanseUp>
+      </div>
     )
   }
 

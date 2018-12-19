@@ -52,25 +52,28 @@ export default compose(
     }
   }),
   withHandlers({
-    getContent: ({ handleClick }) => (list) => (
+    handleLoaded: () => e => {
+      e.target.parentElement.style = 'animation: 2s ease 0s 1 normal none running bGJZDZ; backface-visibility: visible;'
+    }
+  }),
+  withHandlers({
+    getContent: ({ handleClick, handleLoaded }) => (list) => (
       list.map(({
         pk,
         cover_picture,
         date_added,
         title,
       }) => (
-        <Swing
-          duration='1s'
-          as='div'
+        <li
           key={date_added} 
           onClick={() => handleClick(pk)}
           className={style.works__item}
         >
-          <img src={cover_picture} alt={title} />
+          <img src={cover_picture} onLoad={handleLoaded} alt={title} />
           <div className={style.popup__wrap}>
             <h3>{title}</h3>
           </div>
-        </Swing>
+        </li>
       ))
     )
   })

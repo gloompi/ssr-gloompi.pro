@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Helmet }  from 'react-helmet'
-import { ExpanseUp } from 'animate-components'
 
 import style from './style'
 import Header from 'Components/Header'
@@ -19,10 +18,7 @@ class About extends Component{
 
   render(){
     return (
-      <ExpanseUp
-        duration='1s'
-        as='div'
-      >
+      <Fragment>
         <Helmet>
           <title>About | GloompiQue</title>
         </Helmet>
@@ -36,7 +32,7 @@ class About extends Component{
           </div>
         </main>
         <Footer />
-      </ExpanseUp>
+      </Fragment>
     )
   }
 }

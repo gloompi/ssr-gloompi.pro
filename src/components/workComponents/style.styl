@@ -54,23 +54,28 @@
     z-index 100
 
   &_item
-    margin-right 25px
+    border 1px solid $blue
 
     &:last-child
-      margin-right 0
+      border-right: 1px solid $blue
 
   &_link
     Font(medium)
     font-size 20px
     color $blue
     text-transform uppercase
+    padding: 5px 25px
+    border-right: none
+    transition: .3s
 
     &:hover
-      color $hover-blue
+      background-color $hover-blue
+      color: $white
 
 .slider
   position relative
-  z-index: 500
+  z-index: 600
+
   &__container
     position relative
     padding: 25px
@@ -79,7 +84,7 @@
     justify-content: space-between
     width 80%
     height 90%
-    z-index 500
+    z-index 600
   &__close
     position absolute
     left: calc(100% + 10px)

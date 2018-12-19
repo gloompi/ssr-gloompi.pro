@@ -36,26 +36,27 @@ const Header = ({
       className={style.header__bg}
     />
     {homePage
-    ? <div className={style.hello}>
-      <Helmet>
-        <title>Home | GloompiQue</title>
-      </Helmet>
-      <HelloWidget ref={elementToMove} />
-    </div>
-    : <div className={`${style.container} ${style.header__container}`}>
-      <div className={style.header__top}>
-        <Socials />
-        <Menu />
+      ? <div className={style.hello}>
+        <Helmet>
+          <title>Home | GloompiQue</title>
+        </Helmet>
+        <HelloWidget ref={elementToMove} />
       </div>
-      <Avatar ref={elementToMove} />
-      <a
-        href=''
-        className={style.scroll__btn}
-        onClick={handleScroll}
-      >
-        <i className='fas fa-angle-double-down'/>
-      </a>
-    </div>}
+      : <div className={`${style.container} ${style.header__container}`}>
+        <div className={style.header__top}>
+          <Socials />
+          <Menu />
+        </div>
+        <Avatar ref={elementToMove} />
+        <a
+          href=''
+          className={style.scroll__btn}
+          onClick={handleScroll}
+        >
+          <i className='fas fa-angle-double-down'/>
+        </a>
+      </div>
+    }
   </header>
 )
 

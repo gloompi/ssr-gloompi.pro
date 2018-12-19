@@ -6,21 +6,19 @@ import Socials from 'Components/Socials'
 import avatar from 'Assets/images/avatar.jpg'
 import { ownerName, ownerProfession } from 'Root/configClient'
 
-export default function HelloWidget() {
-  return(
-    <main className={style.hello__widget_wrap}>
-      <div className={style.hello__widget_container}>
-        <div className={style.hello__widget_pic}>
-          <img src={avatar} alt="avatar" className={style.hello__widget_img}/>
-        </div>
-        <h2 className={style.hello__widget_title}>{ownerName}</h2>
-        <div className={style.hello__widget_description}>{ownerProfession}</div>
-        <Socials />
-        <HelloMenu />
+const HelloWidget = React.forwardRef((props, ref) => (
+  <main ref={ref} className={style.hello__widget_wrap}>
+    <div className={style.hello__widget_container}>
+      <div className={style.hello__widget_pic}>
+        <img src={avatar} alt="avatar" className={style.hello__widget_img}/>
       </div>
-    </main>
-  )
-}
+      <h2 className={style.hello__widget_title}>{ownerName}</h2>
+      <div className={style.hello__widget_description}>{ownerProfession}</div>
+      <Socials />
+      <HelloMenu />
+    </div>
+  </main>
+))
 
 const HelloMenu = () => {
   return (
@@ -31,3 +29,5 @@ const HelloMenu = () => {
     </nav>
   )
 }
+
+export default HelloWidget
