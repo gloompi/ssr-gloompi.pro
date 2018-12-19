@@ -64,6 +64,7 @@ class ArticleSerializer(serializers.ModelSerializer):
   class Meta:
     model = ArticleModel
     fields = (
+      'pk',
       'title', 
       'cover_picture', 
       'content', 
