@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet'
 import style from './style'
 import Header from 'Components/Header'
 import Footer from 'Components/Footer'
+import ArticlesList from 'Components/articleComponents/ArticlesList'
 
 class Articles extends Component{
   constructor(props) {
@@ -19,7 +20,7 @@ class Articles extends Component{
         </Helmet>
         <Header scrollElement={this.scrollElement} />
         <main ref={this.scrollElement} className={style.articles__main}>
-          <h1>Articles</h1>
+          <ArticlesList />
         </main>
         <Footer />
       </div>

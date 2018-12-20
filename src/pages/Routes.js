@@ -1,47 +1,45 @@
 import React from 'react'
 import universal from 'react-universal-component'
 
-const UniversalComponent = (page, path) => {
-  if(!path) return universal(import(`./${page}`), {
+const UniversalComponent = (path) => (
+  universal(path, {
     onLoad(module, info, props, context) {
       if (module.reducers) {
         context.store.injectReducers(module.reducers)
       }
     }
   })
-  return universal(import(`${path}${page}`), {
-    onLoad(module, info, props, context) {
-      if (module.reducers) {
-        context.store.injectReducers(module.reducers)
-      }
-    }
-  })
-}
+)
 
 export default [
   {
-    component: UniversalComponent('App'),
+    component: UniversalComponent(import('Pages/App')),
     routes: [
       {
-        component: UniversalComponent('Home'),
+        component: UniversalComponent(import('Pages/Home')),
         path: '/',
         exact: true
       },
       {
-        component: UniversalComponent('Works'),
+        component: UniversalComponent(import('Pages/Works')),
         path: '/portfolio',
         exact: true
       },
       {
-        component: UniversalComponent('About'),
+        component: UniversalComponent(import('Pages/About')),
         path: '/about',
         exact: true
       },
       {
-        component: UniversalComponent('Articles'),
-        path: '/blog/1',
+        component: UniversalComponent(import('Components/articleComponents/ArticleModal')),
+        path: '/blog/article/:title',
         exact: true
-      }
+      },
+      {
+        component: UniversalComponent(import('Pages/Articles')),
+        path: '/blog/:page',
+        exact: true
+      },
     ]
   }
 ]

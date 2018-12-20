@@ -5,22 +5,22 @@ import axios from 'axios'
 import { arrToImmObj } from 'Src/helpers'
 import { appName, api } from 'Root/configClient'
 
-const WorkRecord = Record({
+const ArticleRecord = Record({
   pk: null,
   title: '',
-  cover_picture: '',
-  category: [],
+  cover_picture: null,
   content: '',
-  link: '',
-  bgcolor: '#000',
+  category: [],	
+  announce: '',
+  author: 'GlooMpiQue',
+  meta_title:	'',
+  meta_description:	'',
   date_added: null,
-  tech: [],
-  pics: []
 })
 
 const ReducerRecord = Record({
   loaded: null,
-  entities: new WorkRecord,
+  entities: new ArticleRecord,
   entitiesByCategory: [],
   categories: []
 })
@@ -38,10 +38,10 @@ export default (state = new ReducerRecord, action) => {
       return state.set('loaded', null)
 
     case FETCH_ARTICLES_SUCCESS:
-      const { works, categories } = payload
+      const { articles, categories } = payload
       return state
         .set('loaded', true)
-        .set('entities', arrToImmObj(works, WorkRecord, 'pk'))
+        .set('entities', arrToImmObj(articles, ArticleRecord, 'pk'))
         .set('categories', categories)
 
     case FETCH_ARTICLES_ERROR:
@@ -49,47 +49,36 @@ export default (state = new ReducerRecord, action) => {
         .set('loaded', false)
 
     case SET_ARTICLES_BY_CATEGORY:
-      return state.set('entitiesByCategory', payload.works)
+      return state.set('entitiesByCategory', payload.articles)
 
     default:
       return state
   }
 }
 
-export const setWorksByCategory = (categoryId, works) => {
-  const filteredWorks = works.filter(({ category }) => category.some(({ id }) => id == categoryId))
+export const setArticlesByCategory = (categoryId, articles) => {
+  const filteredArticles = articles.filter(({ category }) => category.some((id) => id == categoryId))
   return {
     type: SET_ARTICLES_BY_CATEGORY,
-    payload: { works: filteredWorks },
+    payload: { articles: filteredArticles },
   }
 }
 
-export const fetchWorks = () => {
-  return {
-    type: FETCH_ARTICLES_REQUEST
-  }
-}
+export const fetchArticles = () => ({
+  type: FETCH_ARTICLES_REQUEST
+})
 
-const fetchWorksSaga = function * () {
+const fetchArticlesSaga = function * () {
   try {
-    let works = yield call(axios, `${api}/works/`)
-    let categories = yield call(axios, `${api}/work-categories/`)
-    let techs = yield call(axios, `${api}/work-techs/`)
-    let pics = yield call(axios, `${api}/work-pics/`)
+    let articles = yield call(axios, `${api}/articles/`)
+    let categories = yield call(axios, `${api}/article-categories/`)
         
-    works = works.data.results
+    articles = articles.data.results
     categories = categories.data.results
-    techs = techs.data.results
-    pics = pics.data.results
-    works.forEach(item => {
-      item.pics = pics.filter(({ work }) => work == item.pk)
-      item.tech = item.tech.map(key => techs.find(({ pk }) => pk == key))
-      item.category = item.category.map(key => categories.find(({ id }) => id == key))
-    })
 
     yield put({
       type: FETCH_ARTICLES_SUCCESS,
-      payload: { works, categories }
+      payload: { articles, categories }
     })
   } catch (error) {
     yield put({
@@ -99,5 +88,5 @@ const fetchWorksSaga = function * () {
 }
 
 export const saga = function * () {
-  yield takeEvery(FETCH_ARTICLES_REQUEST, fetchWorksSaga)
+  yield takeEvery(FETCH_ARTICLES_REQUEST, fetchArticlesSaga)
 }

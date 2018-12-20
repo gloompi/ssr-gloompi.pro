@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 import { connect } from 'react-redux'
 import { lifecycle, withHandlers, compose } from 'recompose'
-import { Swing } from 'animate-components'
 
 import style from './style'
 
