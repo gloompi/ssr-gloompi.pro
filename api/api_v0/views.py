@@ -48,9 +48,9 @@ class ArticleView(generics.RetrieveAPIView):
   serializer_class = ArticleSerializer
   
   def get_queryset(self): 
-    articlePk = self.kwargs.get('pk')
+    articleSlug = self.kwargs.get('slug')
     articles = ArticleModel.objects.all()
-    return articles.filter(pk=articlePk)
+    return articles.filter(slug=articleSlug)
 
 class ArticlesView(generics.ListAPIView):
   serializer_class = ArticleSerializer

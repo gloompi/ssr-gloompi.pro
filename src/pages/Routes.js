@@ -32,7 +32,7 @@ export default [
       },
       {
         component: UniversalComponent(import('Components/articleComponents/ArticleModal')),
-        path: '/blog/article/:title',
+        path: '/blog/article/:slug',
         exact: true
       },
       {

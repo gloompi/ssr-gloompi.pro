@@ -26,7 +26,7 @@ class ArticleModel(models.Model):
       (PUBLISHED, 'Опубликовано'),
       (DRAFT, 'Черновик'),
   )
-
+  slug = models.SlugField()
   title = models.CharField(max_length=50, verbose_name='Title')
   cover_picture = models.ImageField(blank=True, upload_to=upload_path, verbose_name='Cover Picture')
   category = models.ManyToManyField(ArticleCategoryModel)

@@ -57,17 +57,17 @@ export default compose(
   withHandlers({
     getContent: ({ handleLoaded }) => (list) => (
       list.map(({
-        pk,
+        slug,
         meta_title,
         title,
         cover_picture,
         announce,
       }) => (
         <li
-          key={pk} 
+          key={slug} 
           className={style.article__item}
         >
-          <Link to={`/blog/article/${meta_title}`} className={style.article__link}>
+          <Link to={`/blog/article/${slug}`} className={style.article__link}>
             <img src={cover_picture} onLoad={handleLoaded} alt={title} />
             <div className={style.article__container}>
               <h3 className={style.article__title}>{title}</h3>

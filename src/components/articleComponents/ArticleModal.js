@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { compose, lifecycle } from 'recompose'
 
 import { ObjToImmArr, createMarkup } from 'Src/helpers'
-import { fetchArticles } from 'Ducks/articles'
+import { fetchArticleByPK } from 'Ducks/articles'
 import Loader from 'Components/Loader'
 import style from './style'
 
@@ -29,11 +29,17 @@ export default compose(
     entitiesByCategory,
     categories,
     loaded,
-  }), ({ fetchArticles })),
+  }), ({ fetchArticleByPK })),
   lifecycle({
     componentDidMount() {
-      const { loaded, fetchArticles } = this.props
-      if (!loaded) fetchArticles()
+      const {
+        match: {
+          params: { title },
+        },
+        loaded,
+        fetchArticleByPK,
+      } = this.props
+      if (!loaded) fetchArticleByPK(title)
     }
   }),
 )(ArticleModal)

@@ -6,7 +6,7 @@ import { arrToImmObj } from 'Src/helpers'
 import { appName, api } from 'Root/configClient'
 
 const ArticleRecord = Record({
-  pk: null,
+  slug: '',
   title: '',
   cover_picture: null,
   content: '',
@@ -27,6 +27,9 @@ const ReducerRecord = Record({
 
 export const modulName = 'articles'
 export const SET_ARTICLES_BY_CATEGORY = `${appName}/${modulName}/SET_ARTICLES_BY_CATEGORY`
+export const FETCH_ARTICLE_BY_PK = `${appName}/${modulName}/FETCH_ARTICLE_BY_PK`
+export const FETCH_ARTICLE_BY_PK_SUCCESS = `${appName}/${modulName}/FETCH_ARTICLE_BY_PK_SUCCESS`
+export const FETCH_ARTICLE_BY_PK_ERROR = `${appName}/${modulName}/FETCH_ARTICLE_BY_PK_ERROR`
 export const FETCH_ARTICLES_REQUEST = `${appName}/${modulName}/FETCH_ARTICLES_REQUEST`
 export const FETCH_ARTICLES_SUCCESS = `${appName}/${modulName}/FETCH_ARTICLES_SUCCESS`
 export const FETCH_ARTICLES_ERROR = `${appName}/${modulName}/FETCH_ARTICLES_ERROR`
@@ -68,6 +71,11 @@ export const fetchArticles = () => ({
   type: FETCH_ARTICLES_REQUEST
 })
 
+export const fetchArticleByPK = (pk) => ({
+  type: FETCH_ARTICLE_BY_PK,
+  payload: { pk }
+})
+
 const fetchArticlesSaga = function * () {
   try {
     let articles = yield call(axios, `${api}/articles/`)
@@ -87,6 +95,25 @@ const fetchArticlesSaga = function * () {
   }
 }
 
+const fetchArticleByPKSaga = function * (payload) {
+  console.log('FETCH', payload)
+  // try {
+  //   let article = yield call(axios, `${api}/articles/`)
+        
+  //   articles = articles.data
+
+  //   yield put({
+  //     type: FETCH_ARTICLE_BY_PK_SUCCESS,
+  //     payload: { article }
+  //   })
+  // } catch (error) {
+  //   yield put({
+  //     type: FETCH_ARTICLE_BY_PK_ERROR
+  //   })
+  // }
+}
+
 export const saga = function * () {
   yield takeEvery(FETCH_ARTICLES_REQUEST, fetchArticlesSaga)
+  yield takeEvery(FETCH_ARTICLE_BY_PK, fetchArticleByPKSaga)
 }
