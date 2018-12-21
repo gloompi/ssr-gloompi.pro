@@ -58,7 +58,6 @@ export default compose(
     getContent: ({ handleLoaded }) => (list) => (
       list.map(({
         slug,
-        meta_title,
         title,
         cover_picture,
         announce,

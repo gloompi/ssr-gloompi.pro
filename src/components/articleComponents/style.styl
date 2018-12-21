@@ -63,3 +63,75 @@
   &__content
     font-size 18px
     color $white
+
+  &__modal
+    position relative
+    display flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+    width 100%
+    min-height 100vh
+    background-color $black
+
+    &_img
+      position fixed
+      left: 50%
+      top: 50%
+      width 100%
+      transform: translate(-50%, -50%)
+      
+      +laptops()
+        width: auto
+        height 100%
+
+    &_container
+      position relative
+      display flex
+      align-items: center
+      justify-content flex-start
+      flex-direction: column
+      width 80%
+      min-height calc(100vh - 250px)
+      margin-top 250px
+      padding: 35px
+      background-color: $bg
+
+      +tablets()
+        width 100%
+        padding: 25px
+
+      +phones()
+        padding: 15px
+
+    &_title
+      Font(medium)
+      font-size 35px
+      color $text
+      text-shadow: 2px 2px $blue
+      text-transform uppercase
+
+      +tablets()
+        font-size 30px
+      
+      +phones()
+        font-size 25px
+
+    &_date
+      Font(kaushan)
+      font-size 16px
+      color $hover-blue
+      margin-bottom 25px
+
+      +tablets()
+        font-size 14px
+
+    &_content
+      Font()
+      font-size 18px
+      color $text
+      width 100%
+      text-align left
+
+      +phones()
+        font-size 16px

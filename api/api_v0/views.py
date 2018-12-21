@@ -46,6 +46,7 @@ class ArticleCategoryView(generics.ListAPIView):
 
 class ArticleView(generics.RetrieveAPIView):
   serializer_class = ArticleSerializer
+  lookup_field = 'slug'
   
   def get_queryset(self): 
     articleSlug = self.kwargs.get('slug')

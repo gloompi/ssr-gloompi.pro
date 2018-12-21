@@ -12,7 +12,7 @@ class WorkSerializer(serializers.ModelSerializer):
   class Meta:
     model = WorkModel
     fields = (
-      'slug',
+      'pk',
       'title', 
       'cover_picture', 
       'category', 
@@ -64,7 +64,7 @@ class ArticleSerializer(serializers.ModelSerializer):
   class Meta:
     model = ArticleModel
     fields = (
-      'pk',
+      'slug',
       'title', 
       'cover_picture', 
       'content', 

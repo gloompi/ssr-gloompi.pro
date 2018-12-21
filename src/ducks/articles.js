@@ -1,4 +1,4 @@
-import { Record } from 'immutable'
+import { Map, Record } from 'immutable'
 import { put, call, takeEvery } from 'redux-saga/effects'
 import axios from 'axios'
 
@@ -20,16 +20,18 @@ const ArticleRecord = Record({
 
 const ReducerRecord = Record({
   loaded: null,
-  entities: new ArticleRecord,
+  entities: new Map,
   entitiesByCategory: [],
-  categories: []
+  categories: [],
+  article: null,
+  articleLoaded: false,
 })
 
 export const modulName = 'articles'
 export const SET_ARTICLES_BY_CATEGORY = `${appName}/${modulName}/SET_ARTICLES_BY_CATEGORY`
-export const FETCH_ARTICLE_BY_PK = `${appName}/${modulName}/FETCH_ARTICLE_BY_PK`
-export const FETCH_ARTICLE_BY_PK_SUCCESS = `${appName}/${modulName}/FETCH_ARTICLE_BY_PK_SUCCESS`
-export const FETCH_ARTICLE_BY_PK_ERROR = `${appName}/${modulName}/FETCH_ARTICLE_BY_PK_ERROR`
+export const FETCH_ARTICLE_BY_SLUG = `${appName}/${modulName}/FETCH_ARTICLE_BY_SLUG`
+export const FETCH_ARTICLE_BY_SLUG_SUCCESS = `${appName}/${modulName}/FETCH_ARTICLE_BY_SLUG_SUCCESS`
+export const FETCH_ARTICLE_BY_SLUG_ERROR = `${appName}/${modulName}/FETCH_ARTICLE_BY_SLUG_ERROR`
 export const FETCH_ARTICLES_REQUEST = `${appName}/${modulName}/FETCH_ARTICLES_REQUEST`
 export const FETCH_ARTICLES_SUCCESS = `${appName}/${modulName}/FETCH_ARTICLES_SUCCESS`
 export const FETCH_ARTICLES_ERROR = `${appName}/${modulName}/FETCH_ARTICLES_ERROR`
@@ -49,7 +51,16 @@ export default (state = new ReducerRecord, action) => {
 
     case FETCH_ARTICLES_ERROR:
       return state
-        .set('loaded', false)
+        .set('loaded', true)
+
+    case FETCH_ARTICLE_BY_SLUG:
+      return state.set('articleLoaded', null)
+
+    case FETCH_ARTICLE_BY_SLUG_SUCCESS:
+      const { data } = payload
+      return state
+        .set('articleLoaded', true)
+        .set('article', data)
 
     case SET_ARTICLES_BY_CATEGORY:
       return state.set('entitiesByCategory', payload.articles)
@@ -71,9 +82,9 @@ export const fetchArticles = () => ({
   type: FETCH_ARTICLES_REQUEST
 })
 
-export const fetchArticleByPK = (pk) => ({
-  type: FETCH_ARTICLE_BY_PK,
-  payload: { pk }
+export const fetchArticleBySlug = (slug) => ({
+  type: FETCH_ARTICLE_BY_SLUG,
+  payload: { slug }
 })
 
 const fetchArticlesSaga = function * () {
@@ -95,25 +106,22 @@ const fetchArticlesSaga = function * () {
   }
 }
 
-const fetchArticleByPKSaga = function * (payload) {
-  console.log('FETCH', payload)
-  // try {
-  //   let article = yield call(axios, `${api}/articles/`)
-        
-  //   articles = articles.data
+const fetchArticleBySlugSaga = function * ({ payload: { slug } }) {
+  try {
+    let { data } = yield call(axios, `${api}/articles/${slug}`)
 
-  //   yield put({
-  //     type: FETCH_ARTICLE_BY_PK_SUCCESS,
-  //     payload: { article }
-  //   })
-  // } catch (error) {
-  //   yield put({
-  //     type: FETCH_ARTICLE_BY_PK_ERROR
-  //   })
-  // }
+    yield put({
+      type: FETCH_ARTICLE_BY_SLUG_SUCCESS,
+      payload: { data }
+    })
+  } catch (error) {
+    yield put({
+      type: FETCH_ARTICLE_BY_SLUG_ERROR
+    })
+  }
 }
 
 export const saga = function * () {
   yield takeEvery(FETCH_ARTICLES_REQUEST, fetchArticlesSaga)
-  yield takeEvery(FETCH_ARTICLE_BY_PK, fetchArticleByPKSaga)
+  yield takeEvery(FETCH_ARTICLE_BY_SLUG, fetchArticleBySlugSaga)
 }
