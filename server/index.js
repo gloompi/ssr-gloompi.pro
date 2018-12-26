@@ -3,9 +3,9 @@ const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const webpackHotServerMiddleware = require('webpack-hot-server-middleware')
-const clientConfig = require('../webpack/client.dev')
-const serverConfig = require('../webpack/server.dev')
-const {port} = require('../config')
+const clientConfig = require('../webpack/client.prod')
+const serverConfig = require('../webpack/server.prod')
+const { port } = require('../config')
 
 const app = express()
 
