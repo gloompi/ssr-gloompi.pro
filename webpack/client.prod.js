@@ -10,7 +10,7 @@ const config = {
     new ExtractCssChunks(),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['bootstrap'], // needed to put webpack bootstrap code before chunks
-      filename: '[name].[chunkhash].js',
+      filename: '[name].js',
     }),
 
     new webpack.DefinePlugin({

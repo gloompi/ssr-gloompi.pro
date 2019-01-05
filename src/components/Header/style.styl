@@ -51,12 +51,17 @@
       font-size 35px
       color: $white
       margin-bottom 25px
+      text-align center
+
+      +tablets()
+        font-size 30px
 
     &_description
       Font(light)
       font-size 18px
       color: $white
       padding: 10px 25px
+      text-align center
       border 1px solid $white
       border-left: none
       border-right: none
@@ -98,7 +103,7 @@
 
 .menu
   position relative
-  padding-top: 10px
+  padding 10px 15px 0 0
 
   &__btn
     position relative

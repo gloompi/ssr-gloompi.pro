@@ -1,5 +1,5 @@
+require('webpack')
 const path = require('path')
-const webpack = require('webpack')
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 
 module.exports = {

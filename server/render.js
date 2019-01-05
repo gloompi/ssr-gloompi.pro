@@ -46,10 +46,12 @@ export default ({ clientStats }) => (req, res) => {
       <html>
         <head>
           <meta charset="utf-8">
+          <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
           ${helmet.title.toString()}
           ${helmet.meta.toString()}
           ${styles}
-          <meta name="theme-color" content="#ffffff">
+          <meta name="theme-color" content="#000000">
         </head>
         <body>
           <script>
