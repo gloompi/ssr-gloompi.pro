@@ -18,6 +18,21 @@
     transform: rotate(-15deg)
     z-index 0
 
+    +desktops()
+      top -150px
+
+    +laptops()
+      top -120px
+    
+    +tablets()
+      top -90px
+
+    +phones()
+      top -60px
+
+    +phones-s()
+      top -40px
+
   &:after
     left: auto
     right: 50%

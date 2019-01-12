@@ -65,7 +65,7 @@ export const movingStars = (canvas, txtInfinity) => {
   let heightModulo
   let grad
   const starCount = 2000
-  const starSize = 3
+  const starSize = 2
   const attractorSize = 100
   const starSize2 = starSize / 2
   const attractorSize2 = attractorSize / 2
